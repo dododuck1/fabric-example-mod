@@ -9,13 +9,14 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class MyMod implements ModInitializer {
 
     // การลงทะเบียน Custom Zombie
     public static final EntityType<CustomZombieEntity> CUSTOM_ZOMBIE = Registry.register(
-        Registry.ENTITY_TYPE,
+        Registries.ENTITY_TYPE,
         new Identifier("mymod", "custom_zombie"),
         EntityType.Builder.create(CustomZombieEntity::new, SpawnGroup.MONSTER)
             .setDimensions(0.6F, 1.95F) // ขนาดของ zombie
@@ -30,13 +31,13 @@ public class MyMod implements ModInitializer {
     @Override
     public void onInitialize() {
         // ลงทะเบียน Custom Zombie
-        Registry.register(Registry.ENTITY_TYPE, new Identifier("mymod", "custom_zombie"), CUSTOM_ZOMBIE);
+        Registry.register(Registries.ENTITY_TYPE, new Identifier("mymod", "custom_zombie"), CUSTOM_ZOMBIE);
 
         // ลงทะเบียนปืน
-        Registry.register(Registry.ITEM, new Identifier("mymod", "ak47"), AK47);
-        Registry.register(Registry.ITEM, new Identifier("mymod", "m4a1"), M4A1);
+        Registry.register(Registries.ITEM, new Identifier("mymod", "ak47"), AK47);
+        Registry.register(Registries.ITEM, new Identifier("mymod", "m4a1"), M4A1);
 
         // ลงทะเบียนกระสุน
-        Registry.register(Registry.ITEM, new Identifier("mymod", "ammo"), AMMO);
+        Registry.register(Registries.ITEM, new Identifier("mymod", "ammo"), AMMO);
     }
 }
